@@ -8,8 +8,8 @@ public interface UserDAOImpl {
 	
 	public int userDel(Object obj);
 	
-	public User userSelect(String sql, Object obj);
+	public User userSel(Object obj);
 	
-	public int userUpdate(String sql, Object obj);
+	public int userUpd(String sql, Object obj);
 	
 }
