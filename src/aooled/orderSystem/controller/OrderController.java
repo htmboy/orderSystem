@@ -17,18 +17,22 @@ import javax.swing.table.TableModel;
 
 import aooled.orderSystem.dao.UserDAO;
 import aooled.orderSystem.event.LoginEvent;
+import aooled.orderSystem.event.OrderAddEvent;
+import aooled.orderSystem.event.PersonalEvent;
 import aooled.orderSystem.model.User;
 import aooled.orderSystem.view.LoginView;
 import aooled.orderSystem.view.OrderMain;
+import aooled.orderSystem.view.UserCenterView;
 
 public class OrderController {
 	private UserDAO userDao;
 	private LoginView loginView;
-	private OrderMain orderMain;
-
+	private UserCenterView userCenterView;
+	private OrderMain om;
+	
 	public OrderController() {
 		userDao = new UserDAO();
-		LoginView loginView = new LoginView();
+		loginView = new LoginView();
 		loginView.setVisible(true);
 		LoginEvent loginEvent = new LoginEvent(loginView, this);
 		
@@ -50,8 +54,31 @@ public class OrderController {
 	}
 	
 	public void orderMain() {
-		OrderMain om = new OrderMain();
-		DefaultTableModel tm = (DefaultTableModel) om.getMainTableModel();
+		om = new OrderMain();
+		new OrderAddEvent(om, this);
+		new PersonalEvent(om, this);
+		om.setVisible(true);
+
+		
+	}
+	
+	public void removeView() {
+		try {
+			
+			om.remove(userCenterView.getScrollPane());
+		}catch(Exception e){
+			
+		}
+		
+	}
+	
+	
+	public void personal() {
+
+		userCenterView = new UserCenterView(om);
+		
+		
+		DefaultTableModel tm = (DefaultTableModel) userCenterView.getMainTableModel();
 		
 		Map userMap = new UserDAO().userSelect();
 		Iterator<Map> it = userMap.entrySet().iterator();
@@ -72,8 +99,10 @@ public class OrderController {
 			v.add("0".equals(user.getLogtime()) ? "Î´µÇÂ¼" : new SimpleDateFormat("yyyy-MM-dd").format(new Date(Long.valueOf(user.getLogtime()+"000"))));
 			tm.addRow(v);
 		}
+		removeView();
+		om.add(userCenterView.getScrollPane());
+		userCenterView.getScrollPane().repaint();
 		om.setVisible(true);
-
 		
 	}
 	

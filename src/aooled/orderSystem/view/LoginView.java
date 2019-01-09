@@ -16,6 +16,7 @@ import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
 
 import aooled.orderSystem.event.LoginEvent;
+import aooled.orderSystem.utils.DefaultStyle;
 
 import javax.swing.BoxLayout;
 
@@ -38,6 +39,7 @@ public class LoginView extends JFrame {
 	}
 	public LoginView() {
 		
+		new DefaultStyle();
 		// ªÒ»°Õº∆¨≥ﬂ¥Á
 		ImageIcon imageicon = new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\logo.png");
 		iconWidth = (int)(imageicon.getIconWidth() * 0.8);

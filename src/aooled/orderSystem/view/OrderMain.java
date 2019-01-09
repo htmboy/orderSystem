@@ -42,14 +42,15 @@ import javax.swing.JScrollPane;
 public class OrderMain extends JFrame {
 	private int width;
 	private int height;
-	private JTable table;
+	private JButton personalButton;
+	private JButton orderAddButton;
 	
 	
 	
 	public OrderMain() {
 		
 		// 获取默认样式
-		new DefaultStyle();
+//		new DefaultStyle();
 		
 		// 获得窗口尺寸
 		Dimension mainSize = getMainSize();
@@ -78,39 +79,21 @@ public class OrderMain extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\logo.png"));
 		toolBar.add(lblNewLabel);
 		
-		JButton btnNewButton_1 = new JButton("新增订单", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon01.png"));
-		btnNewButton_1.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnNewButton_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnNewButton_1.setFocusPainted(false);
-		toolBar.add(btnNewButton_1);
+		orderAddButton = new JButton("新增订单", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon01.png"));
+		orderAddButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+		orderAddButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		orderAddButton.setFocusPainted(false);
+		toolBar.add(orderAddButton);
 		
-		JButton btnNewButton = new JButton("个人中心", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon02.png"));
-		btnNewButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnNewButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		toolBar.add(btnNewButton);
+		personalButton = new JButton("个人中心", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon02.png"));
+		personalButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+		personalButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		toolBar.add(personalButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 72, mainSize.width, mainSize.height - 72);
-		panel.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"id", "\u59D3\u540D", "\u6027\u522B", "\u6743\u9650", "\u6709\u6548", "\u65F6\u95F4", "\u4EE3\u53F7", "\u89D2\u8272", "\u767B\u5F55\u65F6\u95F4"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(31);
-		table.getColumnModel().getColumn(1).setPreferredWidth(60);
-		table.getColumnModel().getColumn(6).setPreferredWidth(35);
-		//		table.setModel(new OrderTableModel());
-		table.setSize(mainSize.width, mainSize.height - 72);
-		scrollPane.setViewportView(table);
-		panel.add(scrollPane);
 	}
 	
-	private Dimension getMainSize() {
+	public Dimension getMainSize() {
 		
 		int w;
 		int h;
@@ -138,10 +121,18 @@ public class OrderMain extends JFrame {
 		return new Dimension(w, h);
 	}
 	
-	public DefaultTableModel getMainTableModel() {
-		return (DefaultTableModel) table.getModel();
-	}
 	
+	
+	
+	
+	public JButton getPersonalButton() {
+		return personalButton;
+	}
+
+	public JButton getOrderAddButton() {
+		return orderAddButton;
+	}
+
 	public static void main(String[] args) {
 		new OrderMain().setVisible(true);
 	}
