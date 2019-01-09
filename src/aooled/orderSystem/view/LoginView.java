@@ -14,14 +14,28 @@ import javax.swing.ImageIcon;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+
+import aooled.orderSystem.event.LoginEvent;
+
 import javax.swing.BoxLayout;
 
 public class LoginView extends JFrame {
-	private JTextField userName;
-	private JPasswordField password;
+	private JTextField userNameField;
+	private JPasswordField passwordField;
+	private JButton loginButton;
 	private int iconHeight;
 	private int iconWidth;
+
 	
+	public JTextField getUserNameField() {
+		return userNameField;
+	}
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+	public JButton getLoginButton() {
+		return loginButton;
+	}
 	public LoginView() {
 		
 		// 获取图片尺寸
@@ -73,9 +87,9 @@ public class LoginView extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		userName = new JTextField();
-		panel.add(userName);
-		userName.setColumns(10);
+		userNameField = new JTextField();
+		panel.add(userNameField);
+		userNameField.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		panel_field.add(panel_1);
@@ -85,16 +99,18 @@ public class LoginView extends JFrame {
 		panel_1.add(lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		password = new JPasswordField();
-		password.setColumns(10);
-		panel_1.add(password);
-		password.setSize(userName.getWidth(), userName.getHeight());
+		passwordField = new JPasswordField();
+		passwordField.setColumns(10);
+		panel_1.add(passwordField);
+		passwordField.setSize(userNameField.getWidth(), userNameField.getHeight());
+		
+		// 按钮区
 		JPanel panel_button = new JPanel();
-		JButton btnNewButton = new JButton("\u767B \u5F55");
+		loginButton = new JButton("\u767B \u5F55");
 		panel_button.setBounds(0, panel_logo.getHeight() + panel_field.getHeight(), iconWidth * 2, 40);
 		getContentPane().add(panel_button);
 		
-		panel_button.add(btnNewButton);
+		panel_button.add(loginButton);
 		
 	}
 	public static void main(String[] args) {

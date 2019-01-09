@@ -4,12 +4,14 @@ import aooled.orderSystem.model.User;
 
 public interface UserDAOImpl {
 	
-	public int userAdd(Object obj);
+	public int userInsert(Object obj);
 	
-	public int userDel(Object obj);
+	public int userDelete(Object obj);
 	
-	public User userSel(Object obj);
+	public User userSelect(Object obj);
 	
-	public int userUpd(String sql, Object obj);
+	public int userUpdate(String sql, Object obj);
+	
+	public boolean userVerify(User user);
 	
 }

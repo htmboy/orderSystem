@@ -8,11 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 import aooled.orderSystem.model.User;
 import aooled.orderSystem.utils.DBConnector;
+import aooled.orderSystem.utils.MD5Util;
 
-public class UserDAO implements UserDAOImpl {
+public class UserDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private Statement st;
@@ -22,28 +25,10 @@ public class UserDAO implements UserDAOImpl {
 			+ "us_username, us_password, us_name, us_sex, action_list, valid, us_time, us_code, us_character, us_logtime"
 			+ ") value(?,?,?,?,?,?,?,?,?,?)"; 
 	private String delSql = "delete from order_user where us_id = ?";
-	private String getSql = "select * from order_user";
+	private String getAllUserSql = "select * from order_user";
+	private String varifySql = "select * from order_user where us_username = ? and us_password = ?";
 	
 	public static void main(String[] args) {
-		UserDAO dao = new UserDAO();
-		User user = new User();
-		// ≤‚ ‘addUser
-//		user.setName("name");
-//		user.setUsername("javva");
-//		user.setPassword("1234565432");
-//		user.setSex("1");
-//		user.setAction("action");
-//		user.setValid("1");
-//		user.setTime(10984667);
-//		user.setCode("E");
-//		user.setCharacter("seller");
-//		user.setLogtime(15399328);
-//		System.out.println(dao.userAdd(user));
-		// ≤‚ ‘delUser
-//		user.setId(21);
-//		System.out.println(dao.userDel(user));
-		// ≤‚ ‘getUser
-		System.out.println(dao.userSel(null).getName());
 		
 	}
 	
@@ -51,8 +36,7 @@ public class UserDAO implements UserDAOImpl {
 		conn = DBConnector.getConnection();
 	}
 	
-	@Override
-	public int userAdd(Object obj) {
+	public int userInsert(Object obj) {
 		// TODO Auto-generated method stub
 		int res = 0;
 		try {
@@ -78,8 +62,7 @@ public class UserDAO implements UserDAOImpl {
 		return res;
 	}
 
-	@Override
-	public int userDel(Object obj) {
+	public int userDelete(Object obj) {
 		// TODO Auto-generated method stub
 		int res = 0;
 		try {
@@ -94,15 +77,14 @@ public class UserDAO implements UserDAOImpl {
 		return res;
 	}
 
-	@Override
-	public User userSel(Object obj) {
+	public Map userSelect() {
 		// TODO Auto-generated method stub
-		User user = new User();
+		Map<Object, User> map = new HashMap<>();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(getSql);
+			ResultSet rs = st.executeQuery(getAllUserSql);
 			while(rs.next()) {
-				
+				User user = new User();
 				user.setId(rs.getInt("us_id"));
 				user.setUsername((String)rs.getObject("us_username"));
 				user.setName((String)rs.getObject("us_name"));
@@ -114,20 +96,40 @@ public class UserDAO implements UserDAOImpl {
 				user.setCode((String)rs.getObject("us_code"));
 				user.setCharacter((String)rs.getObject("us_character"));
 				user.setLogtime(rs.getInt("us_logtime"));
-				System.out.println(user.getName());
+				map.put(rs.getInt("us_id"), user);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return user;
+		return map;
 	}
 
-	@Override
-	public int userUpd(String sql, Object obj) {
+	public int userUpdate(String sql, Object obj) {
 		// TODO Auto-generated method stub
 		
 		return 0;
+	}
+
+	public boolean userVerify(User user) {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			ps = conn.prepareStatement(varifySql);
+			ps.setString(1, user.getUsername());
+			ps.setString(2, MD5Util.getMD5(user.getPassword()));
+			//System.out.println(MD5Util.getMD5(user.getPassword()));
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			if(rs.getRow() > 0)
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }
