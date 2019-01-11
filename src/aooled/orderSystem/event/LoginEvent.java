@@ -2,19 +2,16 @@ package aooled.orderSystem.event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import javax.swing.JButton;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import aooled.orderSystem.controller.OrderController;
 import aooled.orderSystem.view.LoginView;
 
-public class LoginEvent implements ActionListener {
+public class LoginEvent implements ActionListener, KeyListener {
 
 	private OrderController orderController;
 	private LoginView loginView;
-	private boolean loginPassed = false;
 	
 	
 	/**
@@ -35,9 +32,29 @@ public class LoginEvent implements ActionListener {
 		String password = new String(loginView.getPasswordField().getPassword());
 		orderController.login(username, password);
 	}
-	
-	public boolean isLoginPassed() {
-		return loginPassed;
+
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		System.out.println(e);
+		
+	}
+
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -2,6 +2,8 @@ package aooled.orderSystem.event;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -14,20 +16,25 @@ import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
-import aooled.orderSystem.view.OrderMain;
+import aooled.orderSystem.controller.OrderController;
+import aooled.orderSystem.view.OrderMainView;
 
-public class OrderMainEvent extends WindowAdapter {
+public class OrderMainEvent extends WindowAdapter implements ActionListener {
 
-	private OrderMain orderMain;
-	
+	private OrderMainView orderMainView;
+	private OrderController orderController;
 	
 	
 	/**
-	 * @param orderMain
+	 * @param orderMainView
 	 */
-	public OrderMainEvent(OrderMain orderMain) {
+	public OrderMainEvent(OrderMainView orderMainView, OrderController orderController) {
 		super();
-		this.orderMain = orderMain;
+		this.orderMainView = orderMainView;
+		this.orderController = orderController;
+		orderMainView.addWindowListener(this);
+		orderMainView.getOrderAddButton().addActionListener(this);
+		orderMainView.getPersonalButton().addActionListener(this);
 	}
 
 
@@ -37,8 +44,8 @@ public class OrderMainEvent extends WindowAdapter {
 		// TODO Auto-generated method stub
 		int result = JOptionPane.showConfirmDialog(null, "确认登出系统吗？");
 		if(result == 0) {
-			int width = orderMain.getWidth();
-			int height = orderMain.getHeight();
+			int width = orderMainView.getWidth();
+			int height = orderMainView.getHeight();
 			File file = new File("config.properties");
 			if(!file.exists())
 				try {
@@ -62,6 +69,17 @@ public class OrderMainEvent extends WindowAdapter {
 			
 			System.exit(0);
 		}
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if("新增订单".equals(e.getActionCommand()))
+			orderController.orders();
+		if("个人中心".equals(e.getActionCommand()))
+			orderController.personal();
+		
 	}
 
 }

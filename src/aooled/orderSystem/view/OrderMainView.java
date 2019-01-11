@@ -1,6 +1,7 @@
 package aooled.orderSystem.view;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -13,11 +14,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 import aooled.orderSystem.event.OrderMainEvent;
 import aooled.orderSystem.model.OrderTableModel;
 import aooled.orderSystem.utils.DefaultStyle;
+import aooled.orderSystem.utils.ScreenSize;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,38 +43,35 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 
-public class OrderMain extends JFrame {
-	private int width;
-	private int height;
+public class OrderMainView extends JFrame {
+
 	private JButton personalButton;
 	private JButton orderAddButton;
 	
 	
 	
-	public OrderMain() {
+	public OrderMainView() {
 		
 		// 获取默认样式
 //		new DefaultStyle();
 		
 		// 获得窗口尺寸
-		Dimension mainSize = getMainSize();
+		Dimension mainSize = new ScreenSize().getMainSize();
+		System.out.println(mainSize.getHeight() + ":" + mainSize.getWidth());
 		setSize(mainSize);
 		setMinimumSize(new Dimension(800, 400));
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		
-		getContentPane().setLayout(null);
-		
-		this.addWindowListener(new OrderMainEvent(this));
+		getContentPane().setLayout(new BorderLayout(0, 0));
+
 		
 		JPanel panel = new JPanel();
-//		panel.setBounds(0, 0, 785, 370);
 		panel.setSize(mainSize);
-		getContentPane().add(panel);
-		panel.setLayout(null);
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		JToolBar toolBar = new JToolBar();
-//		toolBar.setBounds(680, 5, 175, 72);
 		toolBar.setSize(mainSize.width, 72);
 		panel.add(toolBar);
 		toolBar.setFloatable(false);
@@ -90,41 +91,10 @@ public class OrderMain extends JFrame {
 		personalButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		toolBar.add(personalButton);
 		
+		setVisible(true);
 		
 	}
-	
-	public Dimension getMainSize() {
-		
-		int w;
-		int h;
-		
-		// 获取屏幕的尺寸   
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
-		
-		// 获取保存尺寸的记录
-		Properties prop = new Properties();
-		
-		try {
-			
-			FileReader fr = new FileReader(new File("config.properties"));
-			prop.load(fr);
-			w = prop.getProperty("mainWidth") == null ? (int) screenSize.getWidth() : Integer.parseInt(prop.getProperty("mainWidth"));
-			h = prop.getProperty("mainHeight") == null ? (int) screenSize.getHeight() : Integer.parseInt(prop.getProperty("mainHeight"));
-			
-		} catch (IOException e) {
-			
-			w = (int) screenSize.getWidth();
-			h = (int) screenSize.getHeight();
-			
-		}
-		
-		return new Dimension(w, h);
-	}
-	
-	
-	
-	
-	
+
 	public JButton getPersonalButton() {
 		return personalButton;
 	}
@@ -133,7 +103,4 @@ public class OrderMain extends JFrame {
 		return orderAddButton;
 	}
 
-	public static void main(String[] args) {
-		new OrderMain().setVisible(true);
-	}
 }

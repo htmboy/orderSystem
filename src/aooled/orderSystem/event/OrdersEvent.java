@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import aooled.orderSystem.controller.OrderController;
 import aooled.orderSystem.view.OrderListView;
-import aooled.orderSystem.view.OrderMain;
+import aooled.orderSystem.view.OrderMainView;
 
-public class OrderAddEvent implements ActionListener {
+public class OrdersEvent implements ActionListener {
 
 	private OrderController orderController;
-	private OrderMain orderMain;
+	private OrderMainView orderMain;
 	
 	
 	/**
 	 * @param orderController
 	 */
-	public OrderAddEvent(OrderMain orderMain, OrderController orderController) {
+	public OrdersEvent(OrderMainView orderMain, OrderController orderController) {
 		super();
 		this.orderMain = orderMain;
 		this.orderController = orderController;
@@ -26,8 +26,7 @@ public class OrderAddEvent implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
-		System.out.println("111");
+		orderController.orders();
 	}
 
 }

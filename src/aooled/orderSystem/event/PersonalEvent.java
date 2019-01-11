@@ -4,17 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aooled.orderSystem.controller.OrderController;
-import aooled.orderSystem.view.OrderMain;
+import aooled.orderSystem.view.OrderMainView;
 
 public class PersonalEvent implements ActionListener {
 
 	private OrderController orderController;
-	private OrderMain orderMain;
+	private OrderMainView orderMain;
 	
 	/**
 	 * @param orderController
 	 */
-	public PersonalEvent(OrderMain orderMain, OrderController orderController) {
+	public PersonalEvent(OrderMainView orderMain, OrderController orderController) {
 		super();
 		this.orderMain = orderMain;
 		this.orderController = orderController;

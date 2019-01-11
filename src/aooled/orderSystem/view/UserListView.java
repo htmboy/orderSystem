@@ -6,22 +6,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class UserCenterView {
+import aooled.orderSystem.utils.ScreenSize;
 
-	private JScrollPane scrollPane;
-	private OrderMain orderMain;
+public class UserListView extends JScrollPane{
+
+	// private JScrollPane scrollPane;
+	private OrderMainView orderMainView;
 	private JTable table;
 	
 	/**
 	 * 
 	 */
-	public UserCenterView(OrderMain orderMain) {
+	public UserListView(OrderMainView orderMainView) {
 		super();
-		this.orderMain = orderMain;
-		// TODO Auto-generated constructor stub
-		Dimension mainSize = orderMain.getMainSize();
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 72, mainSize.width, mainSize.height - 72);
+		this.orderMainView = orderMainView;
+
+		setBounds(0, 72, orderMainView.getSize().width, orderMainView.getSize().height - 72);
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
@@ -34,14 +34,9 @@ public class UserCenterView {
 		table.getColumnModel().getColumn(0).setPreferredWidth(31);
 		table.getColumnModel().getColumn(1).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(35);
-		//		table.setModel(new OrderTableModel());
-		table.setSize(mainSize.width, mainSize.height - 72);
-		scrollPane.setViewportView(table);
+		setViewportView(table);
 	}
 
-	public JScrollPane getScrollPane() {
-		return scrollPane;
-	}
 	public DefaultTableModel getMainTableModel() {
 		return (DefaultTableModel) table.getModel();
 	}
