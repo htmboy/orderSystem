@@ -113,7 +113,7 @@ public class LoginView extends JFrame {
 		getContentPane().add(panel_button);
 		
 		panel_button.add(loginButton);
-		
+		setFocusable(true);
 		setVisible(true);
 	}
 

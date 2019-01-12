@@ -34,7 +34,6 @@ public class OrderController {
 	private UserListView userCenterView;
 	private OrderMainView orderMainView;
 	private OrderListView orderListView;
-	private OrderMainEvent orderMainEvent;
 	
 	public OrderController() {
 		userDao = new UserDAO();
