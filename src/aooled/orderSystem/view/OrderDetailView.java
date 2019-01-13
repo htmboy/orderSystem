@@ -10,245 +10,259 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class OrderDetailView extends JFrame {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	private JTextField textField_21;
-	private JTextField textField_22;
-	private JTextField textField_23;
-	private JTextField textField_24;
-	public OrderDetailView() {
-		setSize(new Dimension(800, 400));
+	private JTextField distributionField;
+	private JTextField borrowDataField;
+	private JTextField isAssuranceField;
+	private JTextField constructionField;
+	private JTextField specialOfferField;
+	private JTextField fillDateField;
+	private JTextField orderNumField;
+	private JTextField simpleOrder;
+	private JTextField contractNumField;
+	private JTextField methodField;
+	private JTextField priceField;
+	private JTextField payerField;
+	private JTextField conpanyField;
+	private JTextField sendToField;
+	private JTextField contactField;
+	private JTextField telField;
+	private JTextField recieptBankField;
+	private JTextField taxField;
+	private JTextField contractAmountField;
+	private JTextField depositField;
+	private JTextField tailField;
+	private JTextField assuranceField;
+	private JTextField assuranceDateField;
+	private JTextField constructionAmountField;
+	private JTextField constructionAccountField;
+	
+	
+	public void OrderDetailView() {
+		setSize(new Dimension(800, 600));
+
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel_1 = new JPanel();
 		getContentPane().setLayout(new BorderLayout(0, 0));
-//		panel.setAutoscrolls(true);
-//		JScrollPane scrollPane = new JScrollPane();
-//		 scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//		 scrollPane.getHorizontalScrollBar().setAutoscrolls(false);
-//		 scrollPane.setPreferredSize(new Dimension(800, 0));
-//		getContentPane().add(scrollPane);
 		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.NORTH);
-		panel.setLayout(new BorderLayout(0, 0));
-				
-		JPanel panel_2 = new JPanel();
-		FlowLayout fl_panel_2 = new FlowLayout(FlowLayout.LEFT);
+		getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
-		panel_2.setLayout(fl_panel_2);
+		JPanel panel_2 = new JPanel();
 		
 		panel_2.setBorder(new TitledBorder(null, "\u57FA\u672C\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.add(panel_2, BorderLayout.NORTH);
+		panel.add(panel_2);
 		
 		JPanel panel_10 = new JPanel();
-		panel_2.add(panel_10);
 		
 		JLabel lblNewLabel = new JLabel("\u7ECF\u9500\u5546\uFF1A");
-		panel_10.add(lblNewLabel);
 		
-		textField = new JTextField();
-		panel_10.add(textField);
-		textField.setEditable(false);
-		textField.setColumns(10);
+		distributionField = new JTextField();
+		distributionField.setEditable(false);
+		distributionField.setColumns(10);
 		
 		JPanel panel_9 = new JPanel();
-		panel_2.add(panel_9);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u501F\u8D44\u8D28\uFF1A");
 		panel_9.add(lblNewLabel_1);
 		
-		textField_1 = new JTextField();
-		panel_9.add(textField_1);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
+		borrowDataField = new JTextField();
+		panel_9.add(borrowDataField);
+		borrowDataField.setEditable(false);
+		borrowDataField.setColumns(10);
 		
 		JPanel panel_8 = new JPanel();
-		panel_2.add(panel_8);
 		
 		JLabel lblNewLabel_2 = new JLabel("\u8D28\u4FDD\u91D1\uFF1A");
 		panel_8.add(lblNewLabel_2);
 		
-		textField_2 = new JTextField();
-		panel_8.add(textField_2);
-		textField_2.setEnabled(true);
-		textField_2.setEditable(false);
-		textField_2.setText("");
-		textField_2.setColumns(10);
+		isAssuranceField = new JTextField();
+		panel_8.add(isAssuranceField);
+		isAssuranceField.setEnabled(true);
+		isAssuranceField.setEditable(false);
+		isAssuranceField.setText("");
+		isAssuranceField.setColumns(10);
 		
 		JPanel panel_7 = new JPanel();
-		panel_2.add(panel_7);
 		
 		JLabel lblNewLabel_3 = new JLabel("\u662F\u5426\u65BD\u5DE5\uFF1A");
 		panel_7.add(lblNewLabel_3);
 		
-		textField_3 = new JTextField();
-		panel_7.add(textField_3);
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
+		constructionField = new JTextField();
+		panel_7.add(constructionField);
+		constructionField.setEditable(false);
+		constructionField.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		panel_2.add(panel_6);
 		
 		JLabel lblNewLabel_4 = new JLabel("\u7533\u8BF7\u7279\u4EF7\uFF1A");
 		panel_6.add(lblNewLabel_4);
 		
-		textField_4 = new JTextField();
-		panel_6.add(textField_4);
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
+		specialOfferField = new JTextField();
+		panel_6.add(specialOfferField);
+		specialOfferField.setEditable(false);
+		specialOfferField.setColumns(10);
 		
 		JPanel panel_11 = new JPanel();
-		panel_2.add(panel_11);
 		
 		JLabel lblNewLabel_5 = new JLabel("\u586B\u5355\u65E5\u671F\uFF1A");
 		panel_11.add(lblNewLabel_5);
 		
-		textField_5 = new JTextField();
-		textField_5.setEnabled(false);
-		panel_11.add(textField_5);
-		textField_5.setColumns(10);
+		fillDateField = new JTextField();
+		fillDateField.setEnabled(false);
+		panel_11.add(fillDateField);
+		fillDateField.setColumns(10);
 		
 		JPanel panel_12 = new JPanel();
-		panel_2.add(panel_12);
 		
 		JLabel lblNewLabel_6 = new JLabel("\u5355\u53F7\uFF1A");
 		panel_12.add(lblNewLabel_6);
 		
-		textField_6 = new JTextField();
-		textField_6.setEnabled(false);
-		panel_12.add(textField_6);
-		textField_6.setColumns(10);
+		orderNumField = new JTextField();
+		orderNumField.setEnabled(false);
+		panel_12.add(orderNumField);
+		orderNumField.setColumns(10);
 		
 		JPanel panel_13 = new JPanel();
-		panel_2.add(panel_13);
 		
 		JLabel lblNewLabel_7 = new JLabel("\u6837\u54C1\u8BA2\u5355");
 		panel_13.add(lblNewLabel_7);
 		
-		textField_7 = new JTextField();
-		textField_7.setEnabled(false);
-		panel_13.add(textField_7);
-		textField_7.setColumns(10);
+		simpleOrder = new JTextField();
+		simpleOrder.setEnabled(false);
+		panel_13.add(simpleOrder);
+		simpleOrder.setColumns(10);
 		
 		JPanel panel_14 = new JPanel();
-		panel_2.add(panel_14);
 		
 		JLabel lblNewLabel_8 = new JLabel("\u5BF9\u5E94\u5408\u540C\u7F16\u53F7\uFF1A");
 		panel_14.add(lblNewLabel_8);
 		
-		textField_8 = new JTextField();
-		textField_8.setEnabled(false);
-		panel_14.add(textField_8);
-		textField_8.setColumns(10);
+		contractNumField = new JTextField();
+		contractNumField.setEnabled(false);
+		panel_14.add(contractNumField);
+		contractNumField.setColumns(10);
+		FlowLayout fl_panel_2 = new FlowLayout(FlowLayout.LEFT, 5, 5);
+		fl_panel_2.setAlignOnBaseline(true);
+		panel_2.setLayout(fl_panel_2);
+		panel_2.add(panel_10);
+		panel_10.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_10.add(lblNewLabel);
+		panel_10.add(distributionField);
+		panel_2.add(panel_9);
+		panel_2.add(panel_8);
+		panel_2.add(panel_7);
+		panel_2.add(panel_6);
+		panel_2.add(panel_11);
+		panel_2.add(panel_12);
+		panel_2.add(panel_13);
+		panel_2.add(panel_14);
 		
 		JPanel panel_3 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_3.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel_3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "\u53D1\u8D27\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.add(panel_3, BorderLayout.CENTER);
-		
+		panel_3.setBorder(new TitledBorder(null, "\u53D1\u8D27\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.add(panel_3);
+		// "\u53D1\u8D27\u4FE1\u606F"
 		JPanel panel_15 = new JPanel();
-		panel_3.add(panel_15);
 		
 		JLabel label_1 = new JLabel("\u53D1\u8D27\u65B9\u5F0F\uFF1A");
 		panel_15.add(label_1);
 		
-		textField_9 = new JTextField();
-		panel_15.add(textField_9);
-		textField_9.setColumns(10);
+		methodField = new JTextField();
+		methodField.setEditable(false);
+		panel_15.add(methodField);
+		methodField.setColumns(10);
 		
 		JPanel panel_16 = new JPanel();
-		panel_3.add(panel_16);
 		
 		JLabel lblNewLabel_9 = new JLabel("\u4EF7\u683C\uFF1A");
 		panel_16.add(lblNewLabel_9);
 		
-		textField_10 = new JTextField();
-		panel_16.add(textField_10);
-		textField_10.setColumns(10);
+		priceField = new JTextField();
+		priceField.setEditable(false);
+		panel_16.add(priceField);
+		priceField.setColumns(10);
 		
 		JPanel panel_17 = new JPanel();
-		panel_3.add(panel_17);
 		
 		JLabel label_2 = new JLabel("\u90AE\u652F\uFF1A");
 		panel_17.add(label_2);
 		
-		textField_11 = new JTextField();
-		panel_17.add(textField_11);
-		textField_11.setColumns(10);
+		payerField = new JTextField();
+		payerField.setEditable(false);
+		panel_17.add(payerField);
+		payerField.setColumns(10);
 		
 		JPanel panel_18 = new JPanel();
-		panel_3.add(panel_18);
 		
 		JLabel label_3 = new JLabel("\u5BA2\u53F8\uFF1A");
 		panel_18.add(label_3);
 		
-		textField_12 = new JTextField();
-		panel_18.add(textField_12);
-		textField_12.setColumns(10);
+		conpanyField = new JTextField();
+		conpanyField.setEditable(false);
+		panel_18.add(conpanyField);
+		conpanyField.setColumns(10);
 		
 		JPanel panel_19 = new JPanel();
-		panel_3.add(panel_19);
 		
 		JLabel label_4 = new JLabel("\u6536\u8D27\u5730\u5740\uFF1A");
 		panel_19.add(label_4);
 		
-		textField_13 = new JTextField();
-		panel_19.add(textField_13);
-		textField_13.setColumns(10);
+		sendToField = new JTextField();
+		sendToField.setEditable(false);
+		panel_19.add(sendToField);
+		sendToField.setColumns(10);
 		
 		JPanel panel_20 = new JPanel();
-		panel_3.add(panel_20);
 		
 		JLabel lblNewLabel_10 = new JLabel("\u8054\u7CFB\u4EBA\uFF1A");
 		panel_20.add(lblNewLabel_10);
 		
-		textField_14 = new JTextField();
-		panel_20.add(textField_14);
-		textField_14.setColumns(10);
+		contactField = new JTextField();
+		contactField.setEditable(false);
+		panel_20.add(contactField);
+		contactField.setColumns(10);
 		
 		JPanel panel_21 = new JPanel();
-		panel_3.add(panel_21);
 		
 		JLabel label_5 = new JLabel("\u8054\u7CFB\u7535\u8BDD");
 		panel_21.add(label_5);
 		
-		textField_15 = new JTextField();
-		panel_21.add(textField_15);
-		textField_15.setColumns(10);
+		telField = new JTextField();
+		telField.setEditable(false);
+		panel_21.add(telField);
+		telField.setColumns(10);
+		FlowLayout fl_panel_3 = new FlowLayout(FlowLayout.LEFT, 5, 5);
+		fl_panel_3.setAlignOnBaseline(true);
+		panel_3.setLayout(fl_panel_3);
+		panel_3.add(panel_15);
+		panel_3.add(panel_16);
+		panel_3.add(panel_17);
+		panel_3.add(panel_18);
+		panel_3.add(panel_19);
+		panel_3.add(panel_20);
+		panel_3.add(panel_21);
 		
 		JPanel panel_4 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		panel_4.setBorder(new TitledBorder(null, "\u6536\u6B3E\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.add(panel_4, BorderLayout.SOUTH);
-		
-		JLabel label = new JLabel("");
-		panel_4.add(label);
+		panel.add(panel_4);
+		FlowLayout fl_panel_4 = new FlowLayout(FlowLayout.LEFT, 5, 5);
+		fl_panel_4.setAlignOnBaseline(true);
+		panel_4.setLayout(fl_panel_4);
 		
 		JPanel panel_22 = new JPanel();
 		panel_4.add(panel_22);
@@ -256,9 +270,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_6 = new JLabel("\u8BA2\u5355\u6536\u6B3E\u94F6\u884C\uFF1A");
 		panel_22.add(label_6);
 		
-		textField_16 = new JTextField();
-		panel_22.add(textField_16);
-		textField_16.setColumns(10);
+		recieptBankField = new JTextField();
+		recieptBankField.setEditable(false);
+		panel_22.add(recieptBankField);
+		recieptBankField.setColumns(10);
 		
 		JPanel panel_23 = new JPanel();
 		panel_4.add(panel_23);
@@ -266,9 +281,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_7 = new JLabel("\u662F\u5426\u542B\u7A0E\uFF1A");
 		panel_23.add(label_7);
 		
-		textField_17 = new JTextField();
-		panel_23.add(textField_17);
-		textField_17.setColumns(10);
+		taxField = new JTextField();
+		taxField.setEditable(false);
+		panel_23.add(taxField);
+		taxField.setColumns(10);
 		
 		JPanel panel_24 = new JPanel();
 		panel_4.add(panel_24);
@@ -276,9 +292,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_8 = new JLabel("\u5408\u540C\u603B\u91D1\u989D\uFF1A");
 		panel_24.add(label_8);
 		
-		textField_18 = new JTextField();
-		panel_24.add(textField_18);
-		textField_18.setColumns(10);
+		contractAmountField = new JTextField();
+		contractAmountField.setEditable(false);
+		panel_24.add(contractAmountField);
+		contractAmountField.setColumns(10);
 		
 		JPanel panel_25 = new JPanel();
 		panel_4.add(panel_25);
@@ -286,9 +303,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_9 = new JLabel("\u5DF2\u6536\u5B9A\u91D1\uFF1A");
 		panel_25.add(label_9);
 		
-		textField_19 = new JTextField();
-		panel_25.add(textField_19);
-		textField_19.setColumns(10);
+		depositField = new JTextField();
+		depositField.setEditable(false);
+		panel_25.add(depositField);
+		depositField.setColumns(10);
 		
 		JPanel panel_26 = new JPanel();
 		panel_4.add(panel_26);
@@ -296,9 +314,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_10 = new JLabel("\u672A\u6536\u5C3E\u6B3E\uFF08\u65F6\u95F4\uFF09\uFF1A");
 		panel_26.add(label_10);
 		
-		textField_20 = new JTextField();
-		panel_26.add(textField_20);
-		textField_20.setColumns(10);
+		tailField = new JTextField();
+		tailField.setEditable(false);
+		panel_26.add(tailField);
+		tailField.setColumns(10);
 		
 		JPanel panel_27 = new JPanel();
 		panel_4.add(panel_27);
@@ -306,9 +325,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_11 = new JLabel("\u8D28\u4FDD\u91D1\uFF1A");
 		panel_27.add(label_11);
 		
-		textField_21 = new JTextField();
-		panel_27.add(textField_21);
-		textField_21.setColumns(10);
+		assuranceField = new JTextField();
+		assuranceField.setEditable(false);
+		panel_27.add(assuranceField);
+		assuranceField.setColumns(10);
 		
 		JPanel panel_28 = new JPanel();
 		panel_4.add(panel_28);
@@ -316,9 +336,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_12 = new JLabel("\u8D28\u4FDD\u91D1\u6536\u53D6\u65F6\u95F4\uFF1A");
 		panel_28.add(label_12);
 		
-		textField_22 = new JTextField();
-		panel_28.add(textField_22);
-		textField_22.setColumns(10);
+		assuranceDateField = new JTextField();
+		assuranceDateField.setEditable(false);
+		panel_28.add(assuranceDateField);
+		assuranceDateField.setColumns(10);
 		
 		JPanel panel_29 = new JPanel();
 		panel_4.add(panel_29);
@@ -326,9 +347,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_13 = new JLabel("\u706F\u5177\u65BD\u5DE5\u6B3E\uFF1A");
 		panel_29.add(label_13);
 		
-		textField_23 = new JTextField();
-		panel_29.add(textField_23);
-		textField_23.setColumns(10);
+		constructionAmountField = new JTextField();
+		constructionAmountField.setEditable(false);
+		panel_29.add(constructionAmountField);
+		constructionAmountField.setColumns(10);
 		
 		JPanel panel_30 = new JPanel();
 		panel_4.add(panel_30);
@@ -336,18 +358,170 @@ public class OrderDetailView extends JFrame {
 		JLabel label_14 = new JLabel("\u65BD\u5DE5\u6536\u6B3E\u8D26\u53F7\uFF1A");
 		panel_30.add(label_14);
 		
-		textField_24 = new JTextField();
-		panel_30.add(textField_24);
-		textField_24.setColumns(10);
+		constructionAccountField = new JTextField();
+		constructionAccountField.setEditable(false);
+		panel_30.add(constructionAccountField);
+		constructionAccountField.setColumns(10);
 		
-//		JPanel panel_5 = new JPanel();
-//		getContentPane().add(panel_5, BorderLayout.CENTER);
+		JPanel panel_5 = new JPanel();
+		getContentPane().add(panel_5, BorderLayout.SOUTH);
+		
+		JButton btnNewButton = new JButton("\u786E \u5B9A");
+		panel_5.add(btnNewButton);
+		
 		
 		setVisible(true);
 	}
+	
+	
 
-	public static void main(String[] args) {
-		new OrderDetailView();
+	public JTextField getDistributionField() {
+		return distributionField;
 	}
+
+
+
+	public JTextField getBorrowDataField() {
+		return borrowDataField;
+	}
+
+
+
+	public JTextField getIsAssuranceField() {
+		return isAssuranceField;
+	}
+
+
+
+	public JTextField getConstructionField() {
+		return constructionField;
+	}
+
+
+
+	public JTextField getSpecialOfferField() {
+		return specialOfferField;
+	}
+
+
+
+	public JTextField getFillDateField() {
+		return fillDateField;
+	}
+
+
+
+	public JTextField getOrderNumField() {
+		return orderNumField;
+	}
+
+
+
+	public JTextField getSimpleOrder() {
+		return simpleOrder;
+	}
+
+
+
+	public JTextField getContractNumField() {
+		return contractNumField;
+	}
+
+
+
+	public JTextField getMethodField() {
+		return methodField;
+	}
+
+
+
+	public JTextField getPriceField() {
+		return priceField;
+	}
+
+
+
+	public JTextField getPayerField() {
+		return payerField;
+	}
+
+
+
+	public JTextField getConpanyField() {
+		return conpanyField;
+	}
+
+
+
+	public JTextField getSendToField() {
+		return sendToField;
+	}
+
+
+
+	public JTextField getContactField() {
+		return contactField;
+	}
+
+
+
+	public JTextField getTelField() {
+		return telField;
+	}
+
+
+
+	public JTextField getRecieptBankField() {
+		return recieptBankField;
+	}
+
+
+
+	public JTextField getTaxField() {
+		return taxField;
+	}
+
+
+
+	public JTextField getContractAmountField() {
+		return contractAmountField;
+	}
+
+
+
+	public JTextField getDepositField() {
+		return depositField;
+	}
+
+
+
+	public JTextField getTailField() {
+		return tailField;
+	}
+
+
+
+	public JTextField getAssuranceField() {
+		return assuranceField;
+	}
+
+
+
+	public JTextField getAssuranceDateField() {
+		return assuranceDateField;
+	}
+
+
+
+	public JTextField getConstructionAmountField() {
+		return constructionAmountField;
+	}
+
+
+
+	public JTextField getConstructionAccountField() {
+		return constructionAccountField;
+	}
+
 
 }

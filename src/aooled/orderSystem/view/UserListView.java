@@ -30,7 +30,11 @@ public class UserListView extends JScrollPane{
 			new String[] {
 				"id", "\u59D3\u540D", "\u6027\u522B", "\u6743\u9650", "\u6709\u6548", "\u65F6\u95F4", "\u4EE3\u53F7", "\u89D2\u8272", "\u767B\u5F55\u65F6\u95F4"
 			}
-		));
+		) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(31);
 		table.getColumnModel().getColumn(1).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(35);
@@ -41,6 +45,8 @@ public class UserListView extends JScrollPane{
 		return (DefaultTableModel) table.getModel();
 	}
 
-	
+	public JTable getTable() {
+		return table;
+	}
 	
 }

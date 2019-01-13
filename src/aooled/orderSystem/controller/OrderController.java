@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,6 +22,7 @@ import aooled.orderSystem.event.LoginEvent;
 import aooled.orderSystem.event.OrderMainEvent;
 import aooled.orderSystem.event.OrdersEvent;
 import aooled.orderSystem.event.PersonalEvent;
+import aooled.orderSystem.event.TableMouseEvent;
 import aooled.orderSystem.model.Order;
 import aooled.orderSystem.model.User;
 import aooled.orderSystem.view.LoginView;
@@ -43,6 +45,7 @@ public class OrderController {
 	}
 	
 	public void login(String username, String password) {
+		
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
@@ -62,7 +65,11 @@ public class OrderController {
 		new OrderMainEvent(orderMainView, this);
 
 		userCenterView = new UserListView(orderMainView);
+		new TableMouseEvent(userCenterView.getTable(), this);
+		
 		orderListView = new OrderListView(orderMainView);
+		new TableMouseEvent(orderListView.getTable(), this);
+		
 		orders();
 	}
 	
@@ -78,7 +85,6 @@ public class OrderController {
 	
 	
 	public void personal() {
-
 		DefaultTableModel tableModel = (DefaultTableModel) userCenterView.getMainTableModel();
 		tableModel.setRowCount(0);
 		Map userMap = new UserDAO().userSelect();
@@ -102,7 +108,6 @@ public class OrderController {
 		removeView();
 		orderMainView.add(userCenterView);
 		orderMainView.revalidate();
-		
 	}
 	
 	public void orders() {
@@ -134,8 +139,16 @@ public class OrderController {
 		}
 		removeView();
 		orderMainView.add(orderListView);
-		orderMainView.revalidate();
+		orderMainView.revalidate();	
+	}
+	
+	public void orderDetail(int row) {
+		new OrderDAO();
+	}
+	
+	public void userDetail(int row) {
 		
 	}
+	
 	
 }

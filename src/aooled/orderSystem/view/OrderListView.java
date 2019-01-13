@@ -25,12 +25,17 @@ public class OrderListView extends JScrollPane{
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
+                
 			new Object[][] {
 			},
 			new String[] {
 				"id", "姓名id", "经销商", "质保金" , "申请特价", "填单日期", "订单号", "样品单", "合同编号", "流程状态", "施工单", "借资质", "订单状态", "货物数量"
 			}
-		));
+		) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+				}
+		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(31);
 		table.getColumnModel().getColumn(1).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(35);
@@ -41,6 +46,10 @@ public class OrderListView extends JScrollPane{
 
 	public DefaultTableModel getMainTableModel() {
 		return (DefaultTableModel) table.getModel();
+	}
+	
+	public JTable getTable() {
+		return table;
 	}
 
 }
