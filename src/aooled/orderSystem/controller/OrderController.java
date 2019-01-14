@@ -26,6 +26,7 @@ import aooled.orderSystem.event.TableMouseEvent;
 import aooled.orderSystem.model.Order;
 import aooled.orderSystem.model.User;
 import aooled.orderSystem.view.LoginView;
+import aooled.orderSystem.view.OrderDetailView;
 import aooled.orderSystem.view.OrderListView;
 import aooled.orderSystem.view.OrderMainView;
 import aooled.orderSystem.view.UserListView;
@@ -65,10 +66,10 @@ public class OrderController {
 		new OrderMainEvent(orderMainView, this);
 
 		userCenterView = new UserListView(orderMainView);
-		new TableMouseEvent(userCenterView.getTable(), this);
+		new TableMouseEvent(userCenterView, this);
 		
 		orderListView = new OrderListView(orderMainView);
-		new TableMouseEvent(orderListView.getTable(), this);
+		new TableMouseEvent(orderListView, this);
 		
 		orders();
 	}
@@ -142,12 +143,23 @@ public class OrderController {
 		orderMainView.revalidate();	
 	}
 	
-	public void orderDetail(int row) {
-		new OrderDAO();
+	public void orderDetail(int id) {
+		OrderDAO orderDAO = new OrderDAO();
+		
+		Order order = orderDAO.getOrder(id);
+		
+		OrderDetailView orderDetailView = new OrderDetailView();
+		orderDetailView.getDistributionField().setText(order.getDistribution());
+		orderDetailView.getAssuranceField().setText(order.getOrAssurance());
+		orderDetailView.getSpecialOfferField().setText(order.getSpecialOffer());
+		// orderDetailView.getFillDateField().setText(order.getFillDate());
+		orderDetailView.getOrderNumField().setText(order.getOrderNumber());
+		orderDetailView.getSimpleOrder().setText(order.getSimpleOrder());
+		orderDetailView.getConstructionField().setText(order.getConstruction());
 	}
 	
 	public void userDetail(int row) {
-		
+		System.out.println("this is userDetail");
 	}
 	
 	

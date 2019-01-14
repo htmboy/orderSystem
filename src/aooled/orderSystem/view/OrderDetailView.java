@@ -25,6 +25,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class OrderDetailView extends JFrame {
+	
 	private JTextField distributionField;
 	private JTextField borrowDataField;
 	private JTextField isAssuranceField;
@@ -52,15 +53,16 @@ public class OrderDetailView extends JFrame {
 	private JTextField constructionAccountField;
 	
 	
-	public void OrderDetailView() {
+	public OrderDetailView() {
+
 		setSize(new Dimension(800, 600));
 
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel_1 = new JPanel();
-		getContentPane().setLayout(new BorderLayout(0, 0));
+		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.CENTER);
+		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
 		JPanel panel_2 = new JPanel();
@@ -369,7 +371,6 @@ public class OrderDetailView extends JFrame {
 		JButton btnNewButton = new JButton("\u786E \u5B9A");
 		panel_5.add(btnNewButton);
 		
-		
 		setVisible(true);
 	}
 	
@@ -523,5 +524,8 @@ public class OrderDetailView extends JFrame {
 		return constructionAccountField;
 	}
 
+	public static void main(String[] args) {
+		new OrderDetailView();
+	}
 
 }
