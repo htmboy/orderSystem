@@ -80,7 +80,7 @@ public class OrderMainView extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\logo.png"));
 		toolBar.add(lblNewLabel);
 		
-		orderAddButton = new JButton("新增订单", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon01.png"));
+		orderAddButton = new JButton("订单列表", new ImageIcon("C:\\Users\\aooled-laptop\\eclipse-workspace\\OrderSystem\\resource\\icon01.png"));
 		orderAddButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		orderAddButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		orderAddButton.setFocusPainted(false);

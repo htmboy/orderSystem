@@ -26,6 +26,7 @@ public class UserDAO {
 			+ ") value(?,?,?,?,?,?,?,?,?,?)"; 
 	private String delSql = "delete from order_user where us_id = ?";
 	private String getAllUserSql = "select * from order_user";
+	private String getUserSql = "select * from order_user where us_id = ?";
 	private String varifySql = "select * from order_user where us_username = ? and us_password = ?";
 	
 	public static void main(String[] args) {
@@ -103,6 +104,33 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return map;
+	}
+	
+	public User userSelect(int id) {
+		// TODO Auto-generated method stub
+		User user = new User();
+		try {
+			ps = conn.prepareStatement(getUserSql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				user.setId(rs.getInt("us_id"));
+				user.setUsername((String)rs.getObject("us_username"));
+				user.setName((String)rs.getObject("us_name"));
+				user.setSex((String)rs.getObject("us_sex"));
+				user.setAction((String)rs.getObject("action_list"));
+				
+				user.setValid((String)rs.getObject("valid"));
+				user.setTime(rs.getInt("us_time"));
+				user.setCode((String)rs.getObject("us_code"));
+				user.setCharacter((String)rs.getObject("us_character"));
+				user.setLogtime(rs.getInt("us_logtime"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	public int userUpdate(String sql, Object obj) {

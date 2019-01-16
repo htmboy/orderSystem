@@ -75,7 +75,7 @@ public class OrderMainEvent extends WindowAdapter implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if("新增订单".equals(e.getActionCommand()))
+		if("订单列表".equals(e.getActionCommand()))
 			orderController.orders();
 		if("个人中心".equals(e.getActionCommand()))
 			orderController.personal();

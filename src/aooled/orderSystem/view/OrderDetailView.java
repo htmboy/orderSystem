@@ -41,7 +41,7 @@ public class OrderDetailView extends JFrame {
 	private JTextField conpanyField;
 	private JTextField sendToField;
 	private JTextField contactField;
-	private JTextField telField;
+	private JTextField contactTelField;
 	private JTextField recieptBankField;
 	private JTextField taxField;
 	private JTextField contractAmountField;
@@ -51,6 +51,13 @@ public class OrderDetailView extends JFrame {
 	private JTextField assuranceDateField;
 	private JTextField constructionAmountField;
 	private JTextField constructionAccountField;
+	private JTextField orderStatusField;
+	private JTextField isCancelField;
+	private JTextField goodsNumField;
+	private JTextField alterRecieptField;
+	private JTextField alterAmountField;
+	private JTextField noticeDeliveryField;
+	private JTextField tailDateField;
 	
 	
 	public OrderDetailView() {
@@ -58,11 +65,11 @@ public class OrderDetailView extends JFrame {
 		setSize(new Dimension(800, 600));
 
 		setResizable(false);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JPanel panel_1 = new JPanel();
-		setLayout(new BorderLayout(0, 0));
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
-		add(panel, BorderLayout.CENTER);
+		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
 		JPanel panel_2 = new JPanel();
@@ -175,6 +182,39 @@ public class OrderDetailView extends JFrame {
 		panel_2.add(panel_13);
 		panel_2.add(panel_14);
 		
+		JPanel panel_31 = new JPanel();
+		panel_2.add(panel_31);
+		
+		JLabel label = new JLabel("\u8BA2\u5355\u6D41\u7A0B\uFF1A");
+		panel_31.add(label);
+		
+		orderStatusField = new JTextField();
+		orderStatusField.setEditable(false);
+		panel_31.add(orderStatusField);
+		orderStatusField.setColumns(10);
+		
+		JPanel panel_33 = new JPanel();
+		panel_2.add(panel_33);
+		
+		JLabel label_16 = new JLabel("\u8BA2\u5355\u72B6\u6001\uFF1A");
+		panel_33.add(label_16);
+		
+		isCancelField = new JTextField();
+		isCancelField.setEditable(false);
+		panel_33.add(isCancelField);
+		isCancelField.setColumns(10);
+		
+		JPanel panel_34 = new JPanel();
+		panel_2.add(panel_34);
+		
+		JLabel label_17 = new JLabel("\u8D27\u7269\u6570\u91CF\uFF1A");
+		panel_34.add(label_17);
+		
+		goodsNumField = new JTextField();
+		goodsNumField.setEditable(false);
+		panel_34.add(goodsNumField);
+		goodsNumField.setColumns(10);
+		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(null, "\u53D1\u8D27\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.add(panel_3);
@@ -227,7 +267,7 @@ public class OrderDetailView extends JFrame {
 		sendToField = new JTextField();
 		sendToField.setEditable(false);
 		panel_19.add(sendToField);
-		sendToField.setColumns(10);
+		sendToField.setColumns(30);
 		
 		JPanel panel_20 = new JPanel();
 		
@@ -244,10 +284,10 @@ public class OrderDetailView extends JFrame {
 		JLabel label_5 = new JLabel("\u8054\u7CFB\u7535\u8BDD");
 		panel_21.add(label_5);
 		
-		telField = new JTextField();
-		telField.setEditable(false);
-		panel_21.add(telField);
-		telField.setColumns(10);
+		contactTelField = new JTextField();
+		contactTelField.setEditable(false);
+		panel_21.add(contactTelField);
+		contactTelField.setColumns(10);
 		FlowLayout fl_panel_3 = new FlowLayout(FlowLayout.LEFT, 5, 5);
 		fl_panel_3.setAlignOnBaseline(true);
 		panel_3.setLayout(fl_panel_3);
@@ -255,6 +295,39 @@ public class OrderDetailView extends JFrame {
 		panel_3.add(panel_16);
 		panel_3.add(panel_17);
 		panel_3.add(panel_18);
+		
+		JPanel panel_35 = new JPanel();
+		panel_3.add(panel_35);
+		
+		JLabel label_18 = new JLabel("\u662F\u5426\u4EE3\u6536\uFF1A");
+		panel_35.add(label_18);
+		
+		alterRecieptField = new JTextField();
+		alterRecieptField.setEditable(false);
+		panel_35.add(alterRecieptField);
+		alterRecieptField.setColumns(10);
+		
+		JPanel panel_36 = new JPanel();
+		panel_3.add(panel_36);
+		
+		JLabel lblNewLabel_11 = new JLabel("\u4EE3\u6536\u91D1\u989D\uFF1A");
+		panel_36.add(lblNewLabel_11);
+		
+		alterAmountField = new JTextField();
+		alterAmountField.setEditable(false);
+		panel_36.add(alterAmountField);
+		alterAmountField.setColumns(10);
+		
+		JPanel panel_37 = new JPanel();
+		panel_3.add(panel_37);
+		
+		JLabel label_19 = new JLabel("\u901A\u77E5\u53D1\u8D27\uFF1A");
+		panel_37.add(label_19);
+		
+		noticeDeliveryField = new JTextField();
+		noticeDeliveryField.setEditable(false);
+		panel_37.add(noticeDeliveryField);
+		noticeDeliveryField.setColumns(10);
 		panel_3.add(panel_19);
 		panel_3.add(panel_20);
 		panel_3.add(panel_21);
@@ -313,13 +386,24 @@ public class OrderDetailView extends JFrame {
 		JPanel panel_26 = new JPanel();
 		panel_4.add(panel_26);
 		
-		JLabel label_10 = new JLabel("\u672A\u6536\u5C3E\u6B3E\uFF08\u65F6\u95F4\uFF09\uFF1A");
+		JLabel label_10 = new JLabel("\u672A\u6536\u5C3E\u6B3E\uFF1A");
 		panel_26.add(label_10);
 		
 		tailField = new JTextField();
 		tailField.setEditable(false);
 		panel_26.add(tailField);
 		tailField.setColumns(10);
+		
+		JPanel panel_38 = new JPanel();
+		panel_4.add(panel_38);
+		
+		JLabel label_20 = new JLabel("\u5C3E\u6B3E\u6536\u53D6\u65F6\u95F4\uFF1A");
+		panel_38.add(label_20);
+		
+		tailDateField = new JTextField();
+		tailDateField.setEditable(false);
+		panel_38.add(tailDateField);
+		tailDateField.setColumns(10);
 		
 		JPanel panel_27 = new JPanel();
 		panel_4.add(panel_27);
@@ -406,6 +490,48 @@ public class OrderDetailView extends JFrame {
 
 
 
+	public JTextField getOrderStatusField() {
+		return orderStatusField;
+	}
+
+
+
+	public JTextField getIsCancelField() {
+		return isCancelField;
+	}
+
+
+
+	public JTextField getGoodsNumField() {
+		return goodsNumField;
+	}
+
+
+
+	public JTextField getAlterRecieptField() {
+		return alterRecieptField;
+	}
+
+
+
+	public JTextField getAlterAmountField() {
+		return alterAmountField;
+	}
+
+
+
+	public JTextField getNoticeDeliveryField() {
+		return noticeDeliveryField;
+	}
+
+
+
+	public JTextField getTailDateField() {
+		return tailDateField;
+	}
+
+
+
 	public JTextField getFillDateField() {
 		return fillDateField;
 	}
@@ -466,8 +592,8 @@ public class OrderDetailView extends JFrame {
 
 
 
-	public JTextField getTelField() {
-		return telField;
+	public JTextField getContactTelField() {
+		return contactTelField;
 	}
 
 

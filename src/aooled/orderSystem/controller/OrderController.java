@@ -29,17 +29,20 @@ import aooled.orderSystem.view.LoginView;
 import aooled.orderSystem.view.OrderDetailView;
 import aooled.orderSystem.view.OrderListView;
 import aooled.orderSystem.view.OrderMainView;
+import aooled.orderSystem.view.UserDetailView;
 import aooled.orderSystem.view.UserListView;
 
 public class OrderController {
-	private UserDAO userDao;
+	private UserDAO userDAO;
+	private OrderDAO orderDAO;
 	private LoginView loginView;
 	private UserListView userCenterView;
 	private OrderMainView orderMainView;
 	private OrderListView orderListView;
 	
 	public OrderController() {
-		userDao = new UserDAO();
+		userDAO = new UserDAO();
+		orderDAO = new OrderDAO();
 		loginView = new LoginView();
 		new LoginEvent(loginView, this);
 		
@@ -50,7 +53,7 @@ public class OrderController {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
-		if(userDao.userVerify(user))
+		if(userDAO.userVerify(user))
 		 {
 			JOptionPane.showMessageDialog(loginView, "µÇÂ¼³É¹¦");
 			loginView.dispose();
@@ -144,22 +147,61 @@ public class OrderController {
 	}
 	
 	public void orderDetail(int id) {
-		OrderDAO orderDAO = new OrderDAO();
+		
 		
 		Order order = orderDAO.getOrder(id);
 		
 		OrderDetailView orderDetailView = new OrderDetailView();
 		orderDetailView.getDistributionField().setText(order.getDistribution());
-		orderDetailView.getAssuranceField().setText(order.getOrAssurance());
+		orderDetailView.getIsAssuranceField().setText(order.getOrAssurance());
 		orderDetailView.getSpecialOfferField().setText(order.getSpecialOffer());
-		// orderDetailView.getFillDateField().setText(order.getFillDate());
+		orderDetailView.getFillDateField().setText(String.valueOf(order.getFillDate()));
 		orderDetailView.getOrderNumField().setText(order.getOrderNumber());
 		orderDetailView.getSimpleOrder().setText(order.getSimpleOrder());
+		orderDetailView.getContractNumField().setText(order.getContractNum());
+		orderDetailView.getOrderStatusField().setText(String.valueOf(order.getOrderStatus()));
 		orderDetailView.getConstructionField().setText(order.getConstruction());
+		orderDetailView.getBorrowDataField().setText(order.getBorrowData());
+		orderDetailView.getIsCancelField().setText(order.getOrCancel());
+		orderDetailView.getGoodsNumField().setText(String.valueOf(order.getGoodsNum()));
+		
+		orderDetailView.getMethodField().setText(order.getMethod());
+		orderDetailView.getPriceField().setText(order.getPrice());
+		orderDetailView.getPayerField().setText(order.getPayer());
+		orderDetailView.getConpanyField().setText(order.getConpany());
+		orderDetailView.getAlterRecieptField().setText(order.getAlterReciept());
+		orderDetailView.getAlterAmountField().setText(order.getAlterAmount());
+		orderDetailView.getNoticeDeliveryField().setText(order.getNoticeDelivery());
+		orderDetailView.getSendToField().setText(order.getSendTo());
+		orderDetailView.getContactField().setText(order.getContact());
+		orderDetailView.getContactTelField().setText(order.getContactTel());
+		
+		orderDetailView.getRecieptBankField().setText(order.getRecieptBank());
+		orderDetailView.getTaxField().setText(order.getTax());
+		orderDetailView.getContractAmountField().setText(order.getContractAmount());
+		orderDetailView.getDepositField().setText(String.valueOf(order.getDeposit()));
+		orderDetailView.getAssuranceField().setText(String.valueOf(order.getAssurance()));
+		orderDetailView.getAssuranceDateField().setText(String.valueOf(order.getAssuranceDate()));
+		orderDetailView.getConstructionAmountField().setText(String.valueOf(order.getConstructionAmount()));
+		orderDetailView.getConstructionAccountField().setText(order.getContructionAccount());
+		orderDetailView.getTailField().setText(String.valueOf(order.getTail()));
+		orderDetailView.getTailDateField().setText(String.valueOf(order.getTailDate()));
+		
 	}
 	
-	public void userDetail(int row) {
-		System.out.println("this is userDetail");
+	public void userDetail(int id) {
+		User user = userDAO.userSelect(id);
+		UserDetailView userDetailView = new UserDetailView();
+		userDetailView.getUsernameField().setText(user.getUsername());
+		userDetailView.getNameField().setText(user.getName());
+		userDetailView.getSexField().setText(user.getSex());
+		userDetailView.getActionListField().setText(user.getAction());
+		userDetailView.getValidField().setText(user.getValid());
+		userDetailView.getTimeField().setText(String.valueOf(user.getTime()));
+		userDetailView.getCodeField().setText(user.getCode());
+		userDetailView.getCharacterField().setText(user.getCharacter());
+		userDetailView.getLogTimeField().setText(String.valueOf(user.getLogtime()));
+		
 	}
 	
 	
